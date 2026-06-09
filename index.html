@@ -1,0 +1,1678 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veldrion — Brand Guidelines</title>
+<link rel="icon" href="assets/brand/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand:        #dd5000;
+  --brand-light:  #ff6b2b;
+  --brand-dark:   #B8440A;
+  --brand-darker: #cc4800;
+  --brand-tint:   rgba(221,80,0,.08);
+
+  --navy-900: #09090b;
+  --navy-800: #111113;
+
+  --bg:          #ffffff;
+  --bg-raised:   #fafafa;
+  --bg-subtle:   #f4f4f5;
+  --fg:          #09090b;
+  --fg-muted:    #71717a;
+  --fg-subtle:   #a1a1aa;
+  --border:      #e4e4e7;
+  --border-soft: #f0f0f1;
+
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.06);
+  --shadow:    0 4px 12px rgba(15,23,42,.08);
+  --shadow-md: 0 6px 16px rgba(15,23,42,.10);
+  --shadow-lg: 0 12px 28px rgba(15,23,42,.13);
+
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'JetBrains Mono', Menlo, monospace;
+
+  --sidebar-w: 240px;
+  --header-h: 56px;
+  --ease: cubic-bezier(.4,0,.2,1);
+  --dur: 180ms;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── Layout ── */
+.layout { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-w);
+  position: fixed; top: 0; left: 0; bottom: 0;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  z-index: 40; overflow-y: auto;
+}
+.sidebar__brand {
+  display: flex; align-items: center; gap: 10px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar__logo { height: 28px; width: auto; }
+.sidebar__label {
+  font-size: 10px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  display: block; margin-top: 2px;
+}
+.sidebar__nav { flex: 1; padding: 12px 0; overflow-y: auto; }
+.sidebar__section-title {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  padding: 16px 20px 6px;
+}
+.sidebar__link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 20px; font-size: 13px; font-weight: 500;
+  color: var(--fg-muted); cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur);
+}
+.sidebar__link:hover { color: var(--fg); background: var(--bg-subtle); }
+.sidebar__link.active { color: var(--brand); border-left-color: var(--brand); background: var(--brand-tint); }
+.sidebar__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; flex-shrink: 0; opacity: .5;
+}
+.sidebar__footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--fg-subtle); line-height: 1.5;
+}
+.sidebar__version { font-weight: 600; color: var(--brand); }
+
+/* Main content */
+.main { margin-left: var(--sidebar-w); flex: 1; }
+
+/* Section */
+.section {
+  padding: 72px 64px;
+  border-bottom: 1px solid var(--border-soft);
+  max-width: 900px;
+}
+.section:last-child { border-bottom: none; }
+
+.section__eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--brand);
+  display: block; margin-bottom: 8px;
+}
+.section__title {
+  font-size: 32px; font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.1; margin-bottom: 12px;
+}
+.section__sub {
+  font-size: 16px; color: var(--fg-muted);
+  line-height: 1.65; max-width: 600px; margin-bottom: 48px;
+}
+.section__divider {
+  height: 1px; background: var(--border); margin: 40px 0;
+}
+
+/* Rule card */
+.rule-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+.rule-card__label {
+  font-size: 11px; font-weight: 700; letter-spacing: .10em;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.rule-card__label--do { color: #059669; }
+.rule-card__label--dont { color: #dc2626; }
+.rule-card__label--when { color: var(--brand); }
+.rule-card p { font-size: 14px; color: var(--fg-muted); line-height: 1.6; }
+.rule-card p + p { margin-top: 6px; }
+
+/* Chip */
+.chip {
+  display: inline-flex; align-items: center;
+  background: var(--bg-subtle); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 4px 10px;
+  font: 500 12px var(--font-mono); color: var(--fg-muted);
+}
+
+/* Token row */
+.token-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 0; border-bottom: 1px solid var(--border-soft);
+  font-size: 13px;
+}
+.token-row:last-child { border-bottom: none; }
+.token-row__name { font-family: var(--font-mono); color: var(--brand); width: 180px; flex-shrink: 0; font-size: 12px; }
+.token-row__val { font-family: var(--font-mono); color: var(--fg-muted); width: 120px; flex-shrink: 0; font-size: 12px; }
+.token-row__desc { color: var(--fg-muted); }
+
+/* ── LOGO SECTION ── */
+.logo-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.logo-tile {
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  padding: 40px 32px 24px; display: flex; flex-direction: column;
+  gap: 20px; align-items: flex-start;
+}
+.logo-tile--light { background: #fff; }
+.logo-tile--dark  { background: var(--navy-900); border-color: #1e3252; }
+.logo-tile--gray  { background: var(--bg-subtle); }
+.logo-tile--orange { background: var(--brand); border-color: var(--brand-dark); }
+.logo-tile img { height: 36px; width: auto; display: block; }
+.logo-tile__label {
+  font-size: 11px; font-weight: 600; letter-spacing: .10em;
+  text-transform: uppercase; color: var(--fg-subtle);
+}
+.logo-tile--dark .logo-tile__label,
+.logo-tile--orange .logo-tile__label { color: rgba(255,255,255,.5); }
+
+.logo-do-dont {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.logo-example {
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  padding: 28px 24px 20px; background: #fff;
+}
+.logo-example--bad { border-color: #fca5a5; background: #fff8f8; }
+.logo-example__img-wrap {
+  display: flex; align-items: center; justify-content: center;
+  height: 72px; margin-bottom: 14px;
+}
+.logo-example__badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; letter-spacing: .10em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: var(--radius-full);
+}
+.logo-example__badge--do { background: #dcfce7; color: #166534; }
+.logo-example__badge--dont { background: #fee2e2; color: #991b1b; }
+.logo-example p { font-size: 12px; color: var(--fg-muted); margin-top: 8px; line-height: 1.5; }
+
+.logo-versions-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.logo-versions-table th {
+  text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .10em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  border-bottom: 1px solid var(--border); padding: 8px 0 10px;
+}
+.logo-versions-table td {
+  padding: 12px 0; border-bottom: 1px solid var(--border-soft);
+  color: var(--fg-muted); vertical-align: top;
+}
+.logo-versions-table td:first-child { color: var(--fg); font-weight: 500; padding-right: 16px; white-space: nowrap; }
+.logo-versions-table td:nth-child(2) { padding-right: 16px; }
+.badge-recommended {
+  display: inline-block; background: #dcfce7; color: #166534;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: var(--radius-full);
+  vertical-align: middle; margin-left: 6px;
+}
+.logo-minimum {
+  background: var(--bg-subtle); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 24px;
+  display: flex; align-items: center; gap: 24px; margin-top: 24px;
+}
+.logo-minimum__ruler {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  font-size: 10px; color: var(--fg-subtle); font-family: var(--font-mono);
+}
+.logo-minimum__bar {
+  height: 2px; background: var(--brand); border-radius: 1px;
+}
+
+/* ── COLOR SECTION ── */
+.color-palette {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  margin-bottom: 32px;
+}
+.swatch {
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: var(--shadow-sm);
+}
+.swatch__color { height: 80px; }
+.swatch__info { padding: 10px 12px; background: #fff; border-top: 1px solid rgba(0,0,0,.06); }
+.swatch__name { font-size: 11px; font-weight: 600; color: var(--fg); display: block; margin-bottom: 2px; }
+.swatch__hex  { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); }
+
+.color-usage-rule {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-raised);
+  margin-bottom: 12px;
+}
+.color-usage-rule__dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 1px;
+  border: 2px solid rgba(255,255,255,.4);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
+}
+.color-usage-rule__content { flex: 1; }
+.color-usage-rule__title { font-size: 13px; font-weight: 600; color: var(--fg); margin-bottom: 3px; }
+.color-usage-rule__desc { font-size: 13px; color: var(--fg-muted); line-height: 1.5; }
+
+.orange-meter {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg-raised); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 24px; margin: 24px 0;
+}
+.orange-meter__bar-wrap {
+  flex: 1; height: 10px; background: var(--bg-subtle);
+  border-radius: var(--radius-full); overflow: hidden;
+}
+.orange-meter__bar {
+  height: 100%; width: 5%; background: var(--brand);
+  border-radius: var(--radius-full);
+}
+.orange-meter__label { font-size: 13px; color: var(--fg-muted); white-space: nowrap; }
+.orange-meter__label strong { color: var(--brand); }
+
+/* ── TYPE SECTION ── */
+.type-scale { display: flex; flex-direction: column; gap: 0; }
+.type-row {
+  display: flex; align-items: baseline; gap: 24px;
+  padding: 16px 0; border-bottom: 1px solid var(--border-soft);
+}
+.type-row:last-child { border-bottom: none; }
+.type-row__meta {
+  width: 140px; flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.type-row__role { font-size: 11px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--fg-subtle); }
+.type-row__spec { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); }
+.type-row__sample { flex: 1; color: var(--fg); }
+
+.type-pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.type-pair {
+  background: var(--bg-raised); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 22px;
+}
+.type-pair__label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 10px; }
+.type-pair__sample { color: var(--fg); line-height: 1.5; }
+
+/* ── COMPONENT SECTION ── */
+.comp-group { margin-bottom: 40px; }
+.comp-group__title {
+  font-size: 13px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.comp-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 12px; }
+
+/* Buttons */
+.vd-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 40px; padding: 0 16px; border-radius: 6px;
+  font: 500 14px var(--font-sans); border: 0; cursor: pointer;
+  transition: background 180ms var(--ease), color 180ms, border-color 180ms, box-shadow 180ms;
+  white-space: nowrap;
+}
+.vd-btn--brand { background: var(--brand); color: #fff; font-weight: 600; }
+.vd-btn--brand:hover { background: var(--brand-darker); }
+.vd-btn--outline { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+.vd-btn--outline:hover { background: var(--bg-subtle); }
+.vd-btn--outline-brand { background: transparent; color: var(--brand); border: 1px solid var(--brand); }
+.vd-btn--outline-brand:hover { background: var(--brand-tint); }
+.vd-btn--ghost { background: transparent; color: var(--fg); }
+.vd-btn--ghost:hover { background: var(--bg-subtle); }
+.vd-btn--lg { height: 44px; padding: 0 20px; font-size: 15px; }
+.vd-btn--sm { height: 32px; padding: 0 12px; font-size: 13px; }
+.vd-btn--icon { width: 36px; height: 36px; padding: 0; border-radius: 6px; }
+
+/* Badges */
+.vd-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 10px; border-radius: var(--radius-full);
+  font: 600 12px var(--font-sans); border: 1px solid transparent;
+}
+.vd-badge--default { background: var(--fg); color: #fff; }
+.vd-badge--secondary { background: var(--bg-subtle); color: var(--fg); border-color: var(--border); }
+.vd-badge--brand { background: var(--brand-tint); color: var(--brand); border-color: rgba(221,80,0,.25); }
+.vd-badge--outline { background: transparent; color: var(--fg-muted); border-color: var(--border); }
+
+/* Card */
+.vd-card-demo {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow-sm);
+  max-width: 280px;
+  transition: box-shadow 300ms var(--ease);
+}
+.vd-card-demo:hover { box-shadow: var(--shadow-lg); }
+.vd-card-demo__icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: var(--brand-tint); color: var(--brand);
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+}
+.vd-card-demo__title { font: 600 15px var(--font-sans); margin-bottom: 6px; }
+.vd-card-demo__desc { font-size: 13px; color: var(--fg-muted); line-height: 1.55; }
+
+/* Input */
+.vd-input-demo {
+  width: 100%; max-width: 320px; height: 40px; padding: 0 12px;
+  border-radius: 6px; border: 1px solid var(--border);
+  background: #fff; color: var(--fg); font: 400 14px var(--font-sans);
+  transition: border-color 180ms, box-shadow 180ms;
+}
+.vd-input-demo:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(221,80,0,.18); }
+.vd-label-demo { font: 500 13px var(--font-sans); color: var(--fg); display: block; margin-bottom: 6px; }
+
+/* Hero badge demo */
+.hero-badge-demo {
+  background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow);
+}
+.hero-badge-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  animation: vd-pulse 2s cubic-bezier(.4,0,.6,1) infinite;
+}
+@keyframes vd-pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+.hero-badge-text { font: 600 14px var(--font-sans); color: var(--fg); }
+
+/* ── VOICE & TONE ── */
+.copy-pair {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;
+}
+.copy-ex {
+  border-radius: var(--radius); border: 1px solid var(--border);
+  padding: 16px 18px;
+}
+.copy-ex--do { border-color: #bbf7d0; background: #f0fdf4; }
+.copy-ex--dont { border-color: #fca5a5; background: #fff8f8; }
+.copy-ex__badge {
+  font-size: 10px; font-weight: 700; letter-spacing: .10em;
+  text-transform: uppercase; display: block; margin-bottom: 8px;
+}
+.copy-ex__badge--do  { color: #166534; }
+.copy-ex__badge--dont { color: #991b1b; }
+.copy-ex__text { font-size: 14px; line-height: 1.6; font-family: var(--font-sans); }
+.copy-ex--do .copy-ex__text  { color: #14532d; }
+.copy-ex--dont .copy-ex__text { color: #7f1d1d; text-decoration: line-through; text-decoration-color: #fca5a5; }
+
+.casing-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.casing-table th {
+  text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .10em;
+  text-transform: uppercase; color: var(--fg-subtle);
+  border-bottom: 1px solid var(--border); padding: 8px 0 10px; padding-right: 16px;
+}
+.casing-table td {
+  padding: 11px 0; border-bottom: 1px solid var(--border-soft);
+  color: var(--fg-muted); padding-right: 16px;
+}
+.casing-table td:first-child { color: var(--fg); font-weight: 500; }
+.casing-table code { font-family: var(--font-mono); font-size: 12px; background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; }
+
+/* ── ICON SECTION ── */
+.icon-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.icon-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 16px 12px; border-radius: var(--radius); border: 1px solid var(--border);
+  background: var(--bg-raised); width: 80px; font-size: 10px; font-family: var(--font-mono);
+  color: var(--fg-muted); text-align: center;
+}
+.icon-tile svg { color: var(--fg); }
+.icon-size-demo { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 20px; margin-bottom: 24px; }
+.icon-size {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--fg-subtle); font-family: var(--font-mono);
+}
+
+/* ── SPACING SECTION ── */
+.spacing-grid { display: flex; flex-direction: column; gap: 0; }
+.spacing-row {
+  display: flex; align-items: center; gap: 20px;
+  padding: 10px 0; border-bottom: 1px solid var(--border-soft);
+}
+.spacing-row:last-child { border-bottom: none; }
+.spacing-row__block { background: var(--brand-tint); border: 1px solid rgba(221,80,0,.2); border-radius: 2px; flex-shrink: 0; }
+.spacing-row__name { font-family: var(--font-mono); font-size: 12px; color: var(--brand); width: 80px; }
+.spacing-row__px   { font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); width: 60px; }
+.spacing-row__use  { font-size: 13px; color: var(--fg-muted); }
+
+.radius-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.radius-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-size: 11px; color: var(--fg-subtle); font-family: var(--font-mono);
+}
+.radius-tile__box {
+  width: 64px; height: 64px;
+  background: var(--bg-subtle); border: 2px solid var(--border);
+}
+
+.shadow-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.shadow-tile {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-size: 11px; color: var(--fg-subtle); font-family: var(--font-mono);
+}
+.shadow-tile__box {
+  width: 80px; height: 56px; border-radius: 8px;
+  background: #fff; border: 1px solid rgba(0,0,0,.04);
+}
+
+/* ── DARK MODE SECTION ── */
+.dark-mode-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 24px;
+}
+.dark-panel {
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  overflow: hidden;
+}
+.dark-panel__header {
+  padding: 10px 16px; font-size: 11px; font-weight: 700;
+  letter-spacing: .10em; text-transform: uppercase; border-bottom: 1px solid;
+}
+.dark-panel--light .dark-panel__header { background: #f4f4f5; color: var(--fg-subtle); border-color: var(--border); }
+.dark-panel--dark  .dark-panel__header { background: #1a1a1f; color: rgba(255,255,255,.4); border-color: rgba(255,255,255,.08); }
+.dark-panel__body  { padding: 20px 16px; }
+.dark-panel--dark  .dark-panel__body { background: hsl(240 10% 3.9%); }
+
+.dark-token-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px;
+}
+.dark-token {
+  border-radius: var(--radius); border: 1px solid var(--border);
+  overflow: hidden;
+}
+.dark-token__swatch { height: 40px; }
+.dark-token__info { padding: 8px 10px; background: var(--bg-raised); }
+.dark-token__name { font-family: var(--font-mono); font-size: 11px; color: var(--fg-muted); }
+.dark-token__val  { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); }
+
+/* ── MISC ── */
+.callout {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--brand-tint); border: 1px solid rgba(221,80,0,.20);
+  border-radius: var(--radius-lg); padding: 18px 20px; margin: 24px 0;
+}
+.callout__icon { color: var(--brand); flex-shrink: 0; margin-top: 1px; }
+.callout p { font-size: 14px; line-height: 1.6; color: var(--fg-muted); }
+.callout p strong { color: var(--fg); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+/* ── Hero strip (top of main) ── */
+.hero-strip {
+  padding: 64px 64px 56px;
+  border-bottom: 1px solid var(--border);
+  background: var(--navy-900);
+  position: relative; overflow: hidden;
+}
+.hero-strip__bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 50%, #0d1f3c 100%);
+}
+.hero-strip__grid {
+  position: absolute; inset: 0; opacity: .04;
+  background-image: repeating-linear-gradient(0deg, #fff 0, #fff 1px, transparent 1px, transparent 40px),
+                    repeating-linear-gradient(90deg, #fff 0, #fff 1px, transparent 1px, transparent 40px);
+}
+.hero-strip__content { position: relative; z-index: 1; max-width: 720px; }
+.hero-strip__eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--brand);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.hero-strip__eyebrow-line { width: 24px; height: 2px; background: var(--brand); border-radius: 1px; }
+.hero-strip__title {
+  font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+  line-height: 1.05; letter-spacing: -.03em; color: #fff; margin-bottom: 16px;
+}
+.hero-strip__title span {
+  background: linear-gradient(135deg, var(--brand-light), var(--brand));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-strip__sub { font-size: 16px; color: rgba(255,255,255,.55); line-height: 1.65; max-width: 560px; }
+.hero-strip__meta {
+  display: flex; gap: 32px; margin-top: 36px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.hero-strip__stat { display: flex; flex-direction: column; gap: 3px; }
+.hero-strip__stat-val { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+.hero-strip__stat-lbl { font-size: 12px; color: rgba(255,255,255,.45); }
+
+/* Scroll-spy active state */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .section { padding: 48px 24px; }
+  .hero-strip { padding: 48px 24px 40px; }
+  .logo-grid, .logo-do-dont, .dark-mode-compare { grid-template-columns: 1fr; }
+  .two-col, .three-col, .copy-pair, .type-pair-grid { grid-template-columns: 1fr; }
+  .color-palette { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar__brand">
+    <img class="sidebar__logo" src="assets/brand/logo-new-black.svg" alt="Veldrion">
+  </div>
+  <div class="sidebar__nav">
+    <div class="sidebar__section-title">Identidad</div>
+    <a class="sidebar__link active" href="#logo" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Logo
+    </a>
+    <a class="sidebar__link" href="#color" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Color
+    </a>
+    <a class="sidebar__link" href="#tipografia" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Tipografía
+    </a>
+
+    <div class="sidebar__section-title">Sistema UI</div>
+    <a class="sidebar__link" href="#componentes" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Componentes
+    </a>
+    <a class="sidebar__link" href="#iconografia" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Iconografía
+    </a>
+    <a class="sidebar__link" href="#espaciado" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Espaciado & Tokens
+    </a>
+
+    <div class="sidebar__section-title">Contenido</div>
+    <a class="sidebar__link" href="#voz" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Voz & Tono
+    </a>
+    <a class="sidebar__link" href="#darkmode" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Dark Mode
+    </a>
+
+    <div class="sidebar__section-title">Evolución</div>
+    <a class="sidebar__link" href="#evolucion" onclick="setActive(this)">
+      <span class="sidebar__dot"></span>Evolución de marca
+    </a>
+    <a class="sidebar__link" href="#ai-agency" onclick="setActive(this)">
+      <span class="sidebar__dot" style="background:#6366f1;opacity:1;"></span>AI Agency
+    </a>
+  </div>
+  <div class="sidebar__footer">
+    <span class="sidebar__version">v1.1</span> — Mayo 2026<br>
+    Veldrion Design System<br>
+    Querétaro, México
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- Hero strip -->
+  <div class="hero-strip">
+    <div class="hero-strip__bg"></div>
+    <div class="hero-strip__grid"></div>
+    <div class="hero-strip__content">
+      <div class="hero-strip__eyebrow">
+        <span class="hero-strip__eyebrow-line"></span>
+        Veldrion Design System
+      </div>
+      <h1 class="hero-strip__title">Brand <span>Guidelines</span></h1>
+      <p class="hero-strip__sub">El sistema de diseño que mantiene coherente la identidad de Veldrion en todos los puntos de contacto — sitio web, materiales de marketing, portales y comunicaciones de equipo.</p>
+      <div class="hero-strip__meta">
+        <div class="hero-strip__stat">
+          <span class="hero-strip__stat-val">8</span>
+          <span class="hero-strip__stat-lbl">Secciones</span>
+        </div>
+        <div class="hero-strip__stat">
+          <span class="hero-strip__stat-val">4</span>
+          <span class="hero-strip__stat-lbl">Líneas de servicio</span>
+        </div>
+        <div class="hero-strip__stat">
+          <span class="hero-strip__stat-val">ES/EN</span>
+          <span class="hero-strip__stat-lbl">Bilingual-first</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 1. LOGO ══ -->
+  <section class="section" id="logo">
+    <span class="section__eyebrow">01 — Identidad</span>
+    <h2 class="section__title">Logo</h2>
+    <p class="section__sub">El logotipo de Veldrion combina un símbolo en "V" con una tipografía personalizada. Existen cuatro archivos oficiales — dos versiones de forma, cada una en variante clara y oscura.</p>
+
+    <!-- V-mark solo -->
+    <div style="margin-bottom:24px;">
+      <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Símbolo — V-mark</h3>
+      <div class="logo-grid">
+        <div class="logo-tile logo-tile--light">
+          <img src="assets/brand/veldrion-v-mark.svg" alt="V-mark brand" style="height:64px;width:auto;">
+          <span class="logo-tile__label">Brand color · fondo claro</span>
+        </div>
+        <div class="logo-tile logo-tile--dark">
+          <img src="assets/brand/veldrion-v-mark-white.svg" alt="V-mark blanco" style="height:64px;width:auto;">
+          <span class="logo-tile__label">Blanco · fondo oscuro / fotografía</span>
+        </div>
+        <div class="logo-tile logo-tile--orange">
+          <img src="assets/brand/veldrion-v-mark-white.svg" alt="V-mark sobre naranja" style="height:64px;width:auto;">
+          <span class="logo-tile__label">Blanco · sobre naranja de marca</span>
+        </div>
+        <div class="logo-tile logo-tile--gray">
+          <img src="assets/brand/veldrion-v-mark-black.svg" alt="V-mark negro" style="height:64px;width:auto;">
+          <span class="logo-tile__label">Negro · materiales impresos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Versiones wordmark -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Wordmark completo</h3>
+    <div class="logo-grid">
+      <div class="logo-tile logo-tile--light">
+        <img src="assets/brand/logo-new-black.svg" alt="Logo — fondo claro">
+        <span class="logo-tile__label">Fondo blanco / claro</span>
+      </div>
+      <div class="logo-tile logo-tile--dark">
+        <img src="assets/brand/logo-new-white.svg" alt="Logo — fondo oscuro">
+        <span class="logo-tile__label">Fondo oscuro / fotografía</span>
+      </div>
+    </div>
+
+    <!-- Tabla de versiones -->
+    <table class="logo-versions-table">
+      <thead>
+        <tr>
+          <th>Elemento</th>
+          <th>Archivos</th>
+          <th>Cuándo usar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>V-mark <span class="badge-recommended">principal</span></td>
+          <td><code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">veldrion-v-mark.svg</code> · <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">-white</code> · <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">-black</code></td>
+          <td>Favicon, app icon, redes sociales, espacios reducidos (&lt;140px)</td>
+        </tr>
+        <tr>
+          <td>Wordmark completo</td>
+          <td><code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">logo-black.svg</code> · <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">logo-white.svg</code></td>
+          <td>Navbar, documentos, presentaciones — donde haya espacio horizontal</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section__divider"></div>
+
+    <!-- Do / Don't -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Uso correcto</h3>
+    <div class="logo-do-dont">
+      <div class="logo-example">
+        <div class="logo-example__img-wrap">
+          <img src="assets/brand/veldrion-v-mark.svg" alt="correcto" style="height:56px;width:auto;">
+        </div>
+        <span class="logo-example__badge logo-example__badge--do">✓ Correcto</span>
+        <p>V-mark brand color sobre fondo blanco o muy claro. Contraste mínimo 4.5:1.</p>
+      </div>
+      <div class="logo-example">
+        <div class="logo-example__img-wrap" style="background:var(--navy-900);border-radius:6px;padding:16px;">
+          <img src="assets/brand/veldrion-v-mark-white.svg" alt="correcto oscuro" style="height:56px;width:auto;">
+        </div>
+        <span class="logo-example__badge logo-example__badge--do">✓ Correcto</span>
+        <p>V-mark blanco sobre fondo oscuro, navy o fotografía con overlay.</p>
+      </div>
+      <div class="logo-example">
+        <div class="logo-example__img-wrap" style="background:#dd5000;border-radius:6px;padding:16px;">
+          <img src="assets/brand/veldrion-v-mark-white.svg" alt="correcto naranja" style="height:56px;width:auto;">
+        </div>
+        <span class="logo-example__badge logo-example__badge--do">✓ Correcto</span>
+        <p>V-mark blanco sobre naranja de marca — único caso donde se usa blanco sobre brand.</p>
+      </div>
+      <div class="logo-example logo-example--bad">
+        <div class="logo-example__img-wrap">
+          <img src="assets/brand/veldrion-v-mark.svg" alt="incorrecto" style="height:56px;width:auto;filter:saturate(0) opacity(.3);">
+        </div>
+        <span class="logo-example__badge logo-example__badge--dont">✗ Incorrecto</span>
+        <p>No usar el logo con baja opacidad, filtros, sombras ni efectos de ningún tipo.</p>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Nunca hacer</div>
+      <p>Rotar, distorsionar, o cambiar las proporciones del logo.</p>
+      <p>Reemplazar la tipografía del wordmark con otra fuente.</p>
+      <p>Separar el símbolo "V" del wordmark "Eldrion" en ningún contexto de marca.</p>
+      <p>Cambiar el color del símbolo "V" — siempre es <code style="font-family:var(--font-mono);font-size:12px;background:var(--bg-subtle);padding:2px 6px;border-radius:3px;">#dd5000</code>.</p>
+    </div>
+
+    <div class="logo-minimum">
+      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
+        <img src="assets/brand/veldrion-v-mark.svg" style="height:32px;width:auto;" alt="V-mark 32px">
+        <img src="assets/brand/veldrion-v-mark.svg" style="height:24px;width:auto;opacity:.5;" alt="V-mark 24px límite">
+      </div>
+      <div style="font-size:13px;color:var(--fg-muted);line-height:1.6;">
+        <strong style="color:var(--fg);display:block;margin-bottom:4px;">Tamaño mínimo</strong>
+        V-mark digital: <strong style="color:var(--fg);">24px de alto</strong> mínimo · Impresión: <strong style="color:var(--fg);">8mm</strong>.<br>
+        Wordmark completo digital: <strong style="color:var(--fg);">140px de ancho</strong> mínimo · Impresión: <strong style="color:var(--fg);">30mm</strong>.<br>
+        Por debajo del mínimo del wordmark, usar solo el V-mark.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2. COLOR ══ -->
+  <section class="section" id="color">
+    <span class="section__eyebrow">02 — Identidad</span>
+    <h2 class="section__title">Color</h2>
+    <p class="section__sub">Un único acento naranja sobre una base casi monocromática. El naranja debe aparecer con moderación — menos del 5% de los píxeles en pantalla — para conservar su impacto.</p>
+
+    <!-- Brand palette -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Paleta de marca</h3>
+    <div class="color-palette" style="grid-template-columns:repeat(4,1fr);">
+      <div class="swatch">
+        <div class="swatch__color" style="background:#dd5000;"></div>
+        <div class="swatch__info">
+          <span class="swatch__name">Brand</span>
+          <span class="swatch__hex">#dd5000</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#ff6b2b;"></div>
+        <div class="swatch__info">
+          <span class="swatch__name">Brand Light</span>
+          <span class="swatch__hex">#ff6b2b</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#cc4800;"></div>
+        <div class="swatch__info">
+          <span class="swatch__name">Brand Darker</span>
+          <span class="swatch__hex">#cc4800</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#B8440A;"></div>
+        <div class="swatch__info">
+          <span class="swatch__name">Brand Dark</span>
+          <span class="swatch__hex">#B8440A</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Negros de overlay -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Overlays oscuros — hero & dark UI</h3>
+    <div class="color-palette" style="grid-template-columns:repeat(3,1fr);">
+      <div class="swatch">
+        <div class="swatch__color" style="background:#09090b;"></div>
+        <div class="swatch__info"><span class="swatch__name">Black 900</span><span class="swatch__hex">#09090b</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#111113;"></div>
+        <div class="swatch__info"><span class="swatch__name">Black 800</span><span class="swatch__hex">#111113</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#1a1a1e;"></div>
+        <div class="swatch__info"><span class="swatch__name">Black 700</span><span class="swatch__hex">#1a1a1e</span></div>
+      </div>
+    </div>
+
+    <!-- Neutrals -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Grises neutros</h3>
+    <div class="color-palette">
+      <div class="swatch"><div class="swatch__color" style="background:#FAFAFA;border-bottom:1px solid #e4e4e7;"></div><div class="swatch__info"><span class="swatch__name">Gray 50</span><span class="swatch__hex">#FAFAFA</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#F4F4F5;"></div><div class="swatch__info"><span class="swatch__name">Gray 100</span><span class="swatch__hex">#F4F4F5</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#E4E4E7;"></div><div class="swatch__info"><span class="swatch__name">Gray 200</span><span class="swatch__hex">#E4E4E7</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#A1A1AA;"></div><div class="swatch__info"><span class="swatch__name">Gray 400</span><span class="swatch__hex">#A1A1AA</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#71717A;"></div><div class="swatch__info"><span class="swatch__name">Gray 500</span><span class="swatch__hex">#71717A</span></div></div>
+    </div>
+    <div class="color-palette">
+      <div class="swatch"><div class="swatch__color" style="background:#52525B;"></div><div class="swatch__info"><span class="swatch__name">Gray 600</span><span class="swatch__hex">#52525B</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#3F3F46;"></div><div class="swatch__info"><span class="swatch__name">Gray 700</span><span class="swatch__hex">#3F3F46</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#27272A;"></div><div class="swatch__info"><span class="swatch__name">Gray 800</span><span class="swatch__hex">#27272A</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#18181B;"></div><div class="swatch__info"><span class="swatch__name">Gray 900</span><span class="swatch__hex">#18181B</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#09090b;"></div><div class="swatch__info"><span class="swatch__name">Foreground</span><span class="swatch__hex">#09090b</span></div></div>
+    </div>
+
+    <!-- Semánticos -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;margin-top:32px;">Semánticos — corporativos</h3>
+    <div class="color-palette" style="grid-template-columns:repeat(3,1fr);">
+      <div class="swatch"><div class="swatch__color" style="background:#2d6a4f;"></div><div class="swatch__info"><span class="swatch__name">Success</span><span class="swatch__hex">#2d6a4f</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#7f1d1d;"></div><div class="swatch__info"><span class="swatch__name">Destructive</span><span class="swatch__hex">#7f1d1d</span></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#1e3a5f;"></div><div class="swatch__info"><span class="swatch__name">Info</span><span class="swatch__hex">#1e3a5f</span></div></div>
+    </div>
+
+    <div class="section__divider"></div>
+
+    <!-- Regla del 5% -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:12px;">Regla del naranja</h3>
+    <div class="orange-meter">
+      <div style="font-size:28px;font-weight:700;color:var(--brand);flex-shrink:0;">≤5%</div>
+      <div class="orange-meter__bar-wrap"><div class="orange-meter__bar"></div></div>
+      <div class="orange-meter__label"><strong>#dd5000</strong> de píxeles por pantalla</div>
+    </div>
+
+    <div class="two-col">
+      <div class="color-usage-rule">
+        <div class="color-usage-rule__dot" style="background:var(--brand);"></div>
+        <div class="color-usage-rule__content">
+          <div class="color-usage-rule__title">Naranja: CTA y accento</div>
+          <div class="color-usage-rule__desc">Botones primarios, texto de hero (bg-clip-text), links de acción, puntos de status, eyebrows, focus ring.</div>
+        </div>
+      </div>
+      <div class="color-usage-rule">
+        <div class="color-usage-rule__dot" style="background:var(--navy-900);"></div>
+        <div class="color-usage-rule__content">
+          <div class="color-usage-rule__title">Navy: solo en hero</div>
+          <div class="color-usage-rule__desc">Overlays de fotografía en secciones hero. No usar como fondo de sección genérico ni en cards.</div>
+        </div>
+      </div>
+      <div class="color-usage-rule">
+        <div class="color-usage-rule__dot" style="background:#e4e4e7;border:1px solid #d4d4d8;"></div>
+        <div class="color-usage-rule__content">
+          <div class="color-usage-rule__title">Grises: estructura y texto</div>
+          <div class="color-usage-rule__desc">Bordes, fondos de cards, texto muted. La paleta de grises hace el trabajo pesado del layout.</div>
+        </div>
+      </div>
+      <div class="color-usage-rule">
+        <div class="color-usage-rule__dot" style="background:#2d6a4f;"></div>
+        <div class="color-usage-rule__content">
+          <div class="color-usage-rule__title">Semánticos: apagados y corporativos</div>
+          <div class="color-usage-rule__desc">Solo para estados funcionales — éxito, error, información. Colores oscuros y sobrios, nunca vivos ni decorativos.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tokens CSS -->
+    <div class="section__divider"></div>
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Tokens CSS</h3>
+    <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;">
+      <div class="token-row"><span class="token-row__name">--vd-brand</span><span class="token-row__val">#dd5000</span><span class="token-row__desc">Color primario — CTA, accento, links activos</span></div>
+      <div class="token-row"><span class="token-row__name">--vd-brand-light</span><span class="token-row__val">#ff6b2b</span><span class="token-row__desc">Tope del gradiente hero (bg-clip-text)</span></div>
+      <div class="token-row"><span class="token-row__name">--vd-brand-darker</span><span class="token-row__val">#cc4800</span><span class="token-row__desc">Hover de botón brand, base del gradiente hero</span></div>
+      <div class="token-row"><span class="token-row__name">--brand-tint</span><span class="token-row__val">rgba(221,80,0,.08)</span><span class="token-row__desc">Fondo de iconos en cards, badges brand</span></div>
+      <div class="token-row"><span class="token-row__name">--brand-ring</span><span class="token-row__val">rgba(221,80,0,.30)</span><span class="token-row__desc">Focus ring en inputs y botones</span></div>
+    </div>
+  </section>
+
+  <!-- ══ 3. TIPOGRAFÍA ══ -->
+  <section class="section" id="tipografia">
+    <span class="section__eyebrow">03 — Identidad</span>
+    <h2 class="section__title">Tipografía</h2>
+    <p class="section__sub">Geist Sans para UI y texto, Geist Mono para código y etiquetas técnicas. Sin mezclar otras familias tipográficas.</p>
+
+    <div class="type-pair-grid">
+      <div class="type-pair">
+        <div class="type-pair__label">Geist Sans — UI & Headings</div>
+        <div class="type-pair__sample">
+          <div style="font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px;">Veldrion</div>
+          <div style="font-size:15px;color:var(--fg-muted);">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 .,;:!@#&</div>
+        </div>
+      </div>
+      <div class="type-pair">
+        <div class="type-pair__label">Geist Mono — Código & Tokens</div>
+        <div class="type-pair__sample">
+          <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;letter-spacing:-.01em;line-height:1.1;margin-bottom:6px;">--vd-brand</div>
+          <div style="font-family:var(--font-mono);font-size:13px;color:var(--fg-muted);">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 .,;:!@#&</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:20px;">Escala tipográfica</h3>
+    <div class="type-scale">
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Display</span><span class="type-row__spec">clamp(36→72px) / 700</span></div>
+        <div class="type-row__sample" style="font-size:clamp(36px,4vw,56px);font-weight:700;letter-spacing:-.02em;line-height:1.05;">Servicios TI</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">H1</span><span class="type-row__spec">36px / 700</span></div>
+        <div class="type-row__sample" style="font-size:36px;font-weight:700;letter-spacing:-.02em;line-height:1.1;">Nuestros Servicios</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">H2</span><span class="type-row__spec">30px / 700</span></div>
+        <div class="type-row__sample" style="font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.1;">Infraestructura & Redes</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">H3</span><span class="type-row__spec">20px / 600</span></div>
+        <div class="type-row__sample" style="font-size:20px;font-weight:600;line-height:1.3;">Soporte Técnico Profesional</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">H4</span><span class="type-row__spec">18px / 600</span></div>
+        <div class="type-row__sample" style="font-size:18px;font-weight:600;line-height:1.3;">Soluciones Cloud & Software</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Lead / Subhead</span><span class="type-row__spec">18–20px / 400</span></div>
+        <div class="type-row__sample" style="font-size:18px;color:var(--fg-muted);line-height:1.65;">Soluciones tecnológicas integrales para empresas en Querétaro.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Body</span><span class="type-row__spec">15–16px / 400</span></div>
+        <div class="type-row__sample" style="font-size:15px;color:var(--fg-muted);line-height:1.6;">Transformamos la tecnología de tu negocio con soluciones de infraestructura TI, desarrollo web y ciberseguridad adaptadas a tu industria.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Small / Caption</span><span class="type-row__spec">13px / 400</span></div>
+        <div class="type-row__sample" style="font-size:13px;color:var(--fg-subtle);line-height:1.5;">+52 446 127 0656 · info@veldrion.com · Querétaro, México</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Eyebrow</span><span class="type-row__spec">11px / 700 / uppercase</span></div>
+        <div class="type-row__sample" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);">Nuestras Soluciones</div>
+      </div>
+      <div class="type-row">
+        <div class="type-row__meta"><span class="type-row__role">Mono / Token</span><span class="type-row__spec">12px / 400 mono</span></div>
+        <div class="type-row__sample" style="font-family:var(--font-mono);font-size:12px;color:var(--fg-muted);">--vd-brand: #dd5000; · border-radius: 8px;</div>
+      </div>
+    </div>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Reglas de uso</h3>
+
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">Solo estas familias</div>
+      <p>Geist Sans y Geist Mono. No sustituir con Inter, Roboto, Arial, ni ninguna otra familia — aunque sean similares.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">Pesos permitidos</div>
+      <p>400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold). No usar 300 ni 800+ en elementos de UI.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Nunca itálica en headings</div>
+      <p>La itálica solo aplica en citas textuales dentro del copy (ej. escenarios en cards de industria). Los títulos, eyebrows y botones siempre son en roman.</p>
+    </div>
+
+    <div class="callout">
+      <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong>Para devs:</strong> importar Geist desde Google Fonts con <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500</code>. En producción (veldrion-web) se carga via paquete npm <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">geist</code>. La familia es idéntica; los archivos de fuente pueden diferir mínimamente entre pesos.</p>
+    </div>
+  </section>
+
+  <!-- ══ 4. COMPONENTES ══ -->
+  <section class="section" id="componentes">
+    <span class="section__eyebrow">04 — Sistema UI</span>
+    <h2 class="section__title">Componentes</h2>
+    <p class="section__sub">Los componentes base del sistema. Cada uno tiene variantes estrictas — no agregar nuevas sin consenso.</p>
+
+    <!-- Botones -->
+    <div class="comp-group">
+      <div class="comp-group__title">Botones</div>
+      <div style="margin-bottom:24px;">
+        <div style="font-size:12px;color:var(--fg-subtle);margin-bottom:10px;font-family:var(--font-mono);">Variantes</div>
+        <div class="comp-row">
+          <button class="vd-btn vd-btn--brand">Consulta Gratuita</button>
+          <button class="vd-btn vd-btn--outline">Ver Soluciones</button>
+          <button class="vd-btn vd-btn--outline-brand">Contáctanos</button>
+          <button class="vd-btn vd-btn--ghost">Saber más</button>
+        </div>
+        <div style="font-size:12px;color:var(--fg-subtle);margin-bottom:10px;margin-top:20px;font-family:var(--font-mono);">Tamaños</div>
+        <div class="comp-row" style="align-items:center;">
+          <button class="vd-btn vd-btn--brand vd-btn--sm">SM — Contáctanos</button>
+          <button class="vd-btn vd-btn--brand">Default — Consulta Gratuita</button>
+          <button class="vd-btn vd-btn--brand vd-btn--lg">LG — Consulta Gratuita</button>
+        </div>
+        <div style="font-size:12px;color:var(--fg-subtle);margin-bottom:10px;margin-top:20px;font-family:var(--font-mono);">Sobre foto (hero)</div>
+        <div class="comp-row" style="background:var(--navy-900);padding:16px;border-radius:8px;">
+          <button class="vd-btn vd-btn--brand vd-btn--lg">Consulta Gratuita
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="vd-btn vd-btn--lg" style="background:rgba(255,255,255,.10);color:#fff;border:1px solid #fff;backdrop-filter:blur(4px);">Ver Soluciones</button>
+        </div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-card__label rule-card__label--do">Jerarquía de CTAs</div>
+        <p>Máximo un botón <strong>brand</strong> (naranja) por sección visible. El botón secundario siempre es <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">outline</code> u <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">outline-on-photo</code>.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-card__label rule-card__label--dont">Copy de botones</div>
+        <p>Sentence case. "Consulta Gratuita", "Ver Soluciones", "Contáctanos". Sin signos de exclamación. Sin emojis. Sin mayúsculas totales.</p>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="comp-group">
+      <div class="comp-group__title">Badges</div>
+      <div class="comp-row" style="margin-bottom:16px;">
+        <span class="vd-badge vd-badge--default">Default</span>
+        <span class="vd-badge vd-badge--secondary">Secondary</span>
+        <span class="vd-badge vd-badge--brand">Brand</span>
+        <span class="vd-badge vd-badge--outline">Outline</span>
+      </div>
+      <div style="font-size:12px;color:var(--fg-subtle);margin-bottom:10px;font-family:var(--font-mono);">Floating hero badges</div>
+      <div class="comp-row">
+        <div class="hero-badge-demo">
+          <div class="hero-badge-dot" style="background:#2d6a4f;"></div>
+          <span class="hero-badge-text">99.9% Uptime</span>
+        </div>
+        <div class="hero-badge-demo">
+          <div class="hero-badge-dot" style="background:#1e3a5f;animation-delay:.5s;"></div>
+          <span class="hero-badge-text">Soporte 24/7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div class="comp-group">
+      <div class="comp-group__title">Cards</div>
+      <div class="comp-row" style="align-items:flex-start;">
+        <div class="vd-card-demo">
+          <div class="vd-card-demo__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <div class="vd-card-demo__title">Soporte TI</div>
+          <div class="vd-card-demo__desc">Mesa de ayuda, soporte remoto y presencial para tu empresa. Hover para ver shadow-lg.</div>
+        </div>
+      </div>
+      <div class="rule-card" style="margin-top:16px;">
+        <div class="rule-card__label rule-card__label--do">Anatomía de card</div>
+        <p>Fondo blanco · border 1px <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#e4e4e7</code> · border-radius 8px · shadow-sm en reposo · shadow-lg en hover. Sin colores de acento en el borde. Sin sombras de color de marca.</p>
+      </div>
+    </div>
+
+    <!-- Inputs -->
+    <div class="comp-group">
+      <div class="comp-group__title">Form inputs</div>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:320px;">
+        <div>
+          <label class="vd-label-demo" for="demo-email">Correo electrónico</label>
+          <input class="vd-input-demo" id="demo-email" type="email" placeholder="nombre@empresa.com">
+        </div>
+        <div>
+          <label class="vd-label-demo" for="demo-tel">Teléfono</label>
+          <input class="vd-input-demo" id="demo-tel" type="tel" placeholder="+52 446 000 0000">
+        </div>
+      </div>
+      <div class="rule-card" style="margin-top:16px;">
+        <div class="rule-card__label rule-card__label--do">Focus ring de marca</div>
+        <p>Al hacer focus, el borde cambia a <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#dd5000</code> con ring de <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">rgba(221,80,0,.18)</code>. Nunca usar el azul por defecto del browser ni el ring genérico de shadcn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5. ICONOGRAFÍA ══ -->
+  <section class="section" id="iconografia">
+    <span class="section__eyebrow">05 — Sistema UI</span>
+    <h2 class="section__title">Iconografía</h2>
+    <p class="section__sub">Lucide exclusivamente. Stroke 2px, round caps, currentColor. Sin iconos rellenos, sin PNG, sin icon fonts, sin emojis.</p>
+
+    <div class="icon-grid">
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        server
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        wifi
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        shield
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        activity
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        layout
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        arrow-right
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        map-pin
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2.18H6a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+        phone
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        mail
+      </div>
+      <div class="icon-tile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        globe
+      </div>
+    </div>
+
+    <div class="icon-size-demo">
+      <div class="icon-size">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        12px · inline
+      </div>
+      <div class="icon-size">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        16px · botón
+      </div>
+      <div class="icon-size">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        20px · UI
+      </div>
+      <div class="icon-size">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        32px · card header
+      </div>
+      <div class="icon-size">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        48px · service icon
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">Colores de íconos</div>
+      <p><strong>fg-muted</strong> para íconos decorativos · <strong>brand</strong> para íconos de acción o en tarjetas de servicio · <strong>white</strong> cuando el fondo es oscuro.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Íconos prohibidos</div>
+      <p>No usar Font Awesome, Heroicons, Material Icons ni cualquier otra biblioteca. No usar PNGs ni SVGs con rellenos de color múltiple. No usar emojis como sustitutos de íconos en ninguna interfaz.</p>
+    </div>
+  </section>
+
+  <!-- ══ 6. ESPACIADO & TOKENS ══ -->
+  <section class="section" id="espaciado">
+    <span class="section__eyebrow">06 — Sistema UI</span>
+    <h2 class="section__title">Espaciado & Tokens</h2>
+    <p class="section__sub">Escala de 4px. Todos los espaciados deben ser múltiplos de 4. Usar siempre los tokens CSS — nunca valores arbitrarios.</p>
+
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Escala de espaciado</h3>
+    <div class="spacing-grid">
+      <div class="spacing-row"><span class="spacing-row__name">--space-1</span><span class="spacing-row__px">4px</span><div class="spacing-row__block" style="width:4px;height:16px;"></div><span class="spacing-row__use">Gap mínimo, micro-padding</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-2</span><span class="spacing-row__px">8px</span><div class="spacing-row__block" style="width:8px;height:16px;"></div><span class="spacing-row__use">Gap inline, padding de badge</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-3</span><span class="spacing-row__px">12px</span><div class="spacing-row__block" style="width:12px;height:16px;"></div><span class="spacing-row__use">Gap de nav items, padding de input vertical</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-4</span><span class="spacing-row__px">16px</span><div class="spacing-row__block" style="width:16px;height:16px;"></div><span class="spacing-row__use">Padding de botón, gap de CTA row</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-5</span><span class="spacing-row__px">20px</span><div class="spacing-row__block" style="width:20px;height:16px;"></div><span class="spacing-row__use">Padding de botón LG</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-6</span><span class="spacing-row__px">24px</span><div class="spacing-row__block" style="width:24px;height:16px;"></div><span class="spacing-row__use">Padding de card, gap de grid</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-8</span><span class="spacing-row__px">32px</span><div class="spacing-row__block" style="width:32px;height:16px;"></div><span class="spacing-row__use">Gap entre secciones menores</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-12</span><span class="spacing-row__px">48px</span><div class="spacing-row__block" style="width:48px;height:16px;"></div><span class="spacing-row__use">Margin-bottom de section header</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-20</span><span class="spacing-row__px">80px</span><div class="spacing-row__block" style="width:80px;height:16px;"></div><span class="spacing-row__use">Section padding vertical (mobile)</span></div>
+      <div class="spacing-row"><span class="spacing-row__name">--space-24</span><span class="spacing-row__px">96px</span><div class="spacing-row__block" style="width:96px;height:16px;"></div><span class="spacing-row__use">Section padding vertical (desktop)</span></div>
+    </div>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Border radius</h3>
+    <div class="radius-grid">
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:0;"></div>0px</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:4px;"></div>4px · sm</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:6px;"></div>6px · md</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:8px;"></div>8px · default</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:12px;"></div>12px · xl</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:16px;"></div>16px · 2xl</div>
+      <div class="radius-tile"><div class="radius-tile__box" style="border-radius:9999px;"></div>full · pills</div>
+    </div>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Sombras</h3>
+    <div class="shadow-grid">
+      <div class="shadow-tile"><div class="shadow-tile__box" style="box-shadow:0 1px 2px rgba(15,23,42,.06);"></div>shadow-sm · reposo</div>
+      <div class="shadow-tile"><div class="shadow-tile__box" style="box-shadow:0 4px 12px rgba(15,23,42,.08);"></div>shadow</div>
+      <div class="shadow-tile"><div class="shadow-tile__box" style="box-shadow:0 6px 16px rgba(15,23,42,.10);"></div>shadow-md</div>
+      <div class="shadow-tile"><div class="shadow-tile__box" style="box-shadow:0 12px 28px rgba(15,23,42,.13);"></div>shadow-lg · hover</div>
+      <div class="shadow-tile"><div class="shadow-tile__box" style="box-shadow:0 20px 40px rgba(15,23,42,.16);"></div>shadow-xl</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Sin sombras de color de marca</div>
+      <p>Las sombras siempre son negras con baja opacidad. Nunca usar shadow naranja (<code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">shadow-brand</code>) fuera de elementos explícitamente diseñados para ello — como el botón flotante de WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- ══ 7. VOZ & TONO ══ -->
+  <section class="section" id="voz">
+    <span class="section__eyebrow">07 — Contenido</span>
+    <h2 class="section__title">Voz & Tono</h2>
+    <p class="section__sub">Español primero. Formal pero cercano. La marca habla de "tu empresa" — directa, orientada a beneficios, sin jerga apilada.</p>
+
+    <!-- Atributos -->
+    <div class="three-col" style="margin-bottom:32px;">
+      <div class="rule-card" style="margin-bottom:0;">
+        <div class="rule-card__label rule-card__label--when">Técnico</div>
+        <p>Nombramos entregables concretos: "infraestructura TI", "soluciones cloud", "ciberseguridad". Sin acrónimos sueltos sin definir.</p>
+      </div>
+      <div class="rule-card" style="margin-bottom:0;">
+        <div class="rule-card__label rule-card__label--when">Formal pero cálido</div>
+        <p>Tuteamos al lector ("tu empresa", "tu negocio"). Nunca "usted". Nunca exclamaciones ni tono publicitario.</p>
+      </div>
+      <div class="rule-card" style="margin-bottom:0;">
+        <div class="rule-card__label rule-card__label--when">Orientado a beneficios</div>
+        <p>Los títulos combinan una noun phrase con un resultado: "Servicios y Consultoría de TI para tu Empresa". El beneficio va al final.</p>
+      </div>
+    </div>
+
+    <!-- Do / Don't copy -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Copy de ejemplo</h3>
+    <div class="copy-pair">
+      <div class="copy-ex copy-ex--do">
+        <span class="copy-ex__badge copy-ex__badge--do">Correcto</span>
+        <div class="copy-ex__text">"Servicios y Consultoría de TI para tu Empresa"</div>
+      </div>
+      <div class="copy-ex copy-ex--dont">
+        <span class="copy-ex__badge copy-ex__badge--dont">Incorrecto</span>
+        <div class="copy-ex__text">"¡SOLUCIONES TI PARA TU EMPRESA! 🚀"</div>
+      </div>
+    </div>
+    <div class="copy-pair">
+      <div class="copy-ex copy-ex--do">
+        <span class="copy-ex__badge copy-ex__badge--do">Correcto</span>
+        <div class="copy-ex__text">"Transformamos la tecnología de tu negocio."</div>
+      </div>
+      <div class="copy-ex copy-ex--dont">
+        <span class="copy-ex__badge copy-ex__badge--dont">Incorrecto</span>
+        <div class="copy-ex__text">"¡Transformamos tu negocio con tecnología de punta!"</div>
+      </div>
+    </div>
+    <div class="copy-pair">
+      <div class="copy-ex copy-ex--do">
+        <span class="copy-ex__badge copy-ex__badge--do">Correcto</span>
+        <div class="copy-ex__text">"Consulta Gratuita" · "Ver Soluciones" · "Contáctanos"</div>
+      </div>
+      <div class="copy-ex copy-ex--dont">
+        <span class="copy-ex__badge copy-ex__badge--dont">Incorrecto</span>
+        <div class="copy-ex__text">"¡EMPIEZA AHORA!" · "CLICK AQUÍ" · "VER MÁS"</div>
+      </div>
+    </div>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Reglas de capitalización</h3>
+    <table class="casing-table">
+      <thead>
+        <tr><th>Elemento</th><th>Regla</th><th>Ejemplo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Headings / títulos</td><td>Primera palabra + sustantivos propios</td><td><code>Nuestros servicios</code> · <code>Sobre Veldrion</code></td></tr>
+        <tr><td>Eyebrows</td><td>TODO EN MAYÚSCULAS · letra-espaciado</td><td><code>NUESTRAS SOLUCIONES</code></td></tr>
+        <tr><td>Botones CTA</td><td>Sentence case, excepciones propias</td><td><code>Consulta Gratuita</code> · <code>Ver Soluciones</code></td></tr>
+        <tr><td>Nav links</td><td>Primera letra mayúscula</td><td><code>Servicios</code> · <code>Contacto</code></td></tr>
+        <tr><td>Badges UI</td><td>Sentence case</td><td><code>99.9% Uptime</code> · <code>Soporte 24/7</code></td></tr>
+        <tr><td>Copy de cuerpo</td><td>Puntuación española estándar</td><td>Sin doble espacio. Punto final en párrafos.</td></tr>
+        <tr><td>Signos prohibidos</td><td>—</td><td>Sin <code>!</code> ni <code>?</code> al inicio. Sin <code>🚀</code> ni emojis.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section__divider"></div>
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Patrones de copy reusables</h3>
+    <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;">
+      <div class="token-row"><span class="token-row__name" style="width:200px;">Hero H1</span><span class="token-row__desc" style="font-style:italic;">"[Servicio] para tu Empresa"</span></div>
+      <div class="token-row"><span class="token-row__name" style="width:200px;">Hero subhead</span><span class="token-row__desc" style="font-style:italic;">"Soluciones [adj.] para empresas: [lista]. Transformamos la tecnología de tu negocio."</span></div>
+      <div class="token-row"><span class="token-row__name" style="width:200px;">Service tagline</span><span class="token-row__desc" style="font-style:italic;">"[Resultado] para tu negocio" · "Soluciones [adj.] de [tema]"</span></div>
+      <div class="token-row"><span class="token-row__name" style="width:200px;">CTA primario</span><span class="token-row__desc" style="font-style:italic;">"Consulta Gratuita" (siempre)</span></div>
+      <div class="token-row"><span class="token-row__name" style="width:200px;">CTA secundario</span><span class="token-row__desc" style="font-style:italic;">"Ver Soluciones" · "Saber más" · "Conocer más"</span></div>
+      <div class="token-row"><span class="token-row__name" style="width:200px;">Stat badge</span><span class="token-row__desc" style="font-style:italic;">"[Número]% [Noun]" · "[+N] [Noun]"</span></div>
+    </div>
+  </section>
+
+  <!-- ══ 8. DARK MODE ══ -->
+  <section class="section" id="darkmode">
+    <span class="section__eyebrow">08 — Sistema UI</span>
+    <h2 class="section__title">Dark Mode</h2>
+    <p class="section__sub">Dark mode está implementado y tokenizado en el repositorio. La pregunta no es si existe, sino cuándo y cómo aplicarlo.</p>
+
+    <div class="dark-mode-compare">
+      <!-- Light panel -->
+      <div class="dark-panel dark-panel--light">
+        <div class="dark-panel__header">Light (default)</div>
+        <div class="dark-panel__body" style="display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:18px;font-weight:700;color:#09090b;letter-spacing:-.02em;">Soporte TI</div>
+          <div style="font-size:13px;color:#71717a;line-height:1.55;">Mesa de ayuda, soporte remoto y presencial.</div>
+          <button class="vd-btn vd-btn--brand vd-btn--sm">Consulta Gratuita</button>
+          <div style="background:#fff;border:1px solid #e4e4e7;border-radius:8px;padding:12px 14px;font-size:13px;color:#71717a;">Card con fondo blanco · border suave</div>
+        </div>
+      </div>
+      <!-- Dark panel -->
+      <div class="dark-panel dark-panel--dark">
+        <div class="dark-panel__header">Dark</div>
+        <div class="dark-panel__body" style="display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:18px;font-weight:700;color:#fafafa;letter-spacing:-.02em;">Soporte TI</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;">Mesa de ayuda, soporte remoto y presencial.</div>
+          <button class="vd-btn vd-btn--brand vd-btn--sm">Consulta Gratuita</button>
+          <div style="background:hsl(240 10% 8%);border:1px solid hsl(240 3.7% 20%);border-radius:8px;padding:12px 14px;font-size:13px;color:rgba(255,255,255,.5);">Card oscura · border dim</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;margin-top:8px;">Tokens dark mode</h3>
+    <div class="dark-token-grid">
+      <div class="dark-token">
+        <div class="dark-token__swatch" style="background:hsl(240 10% 3.9%);"></div>
+        <div class="dark-token__info"><div class="dark-token__name">--background.dark</div><div class="dark-token__val">hsl(240 10% 3.9%)</div></div>
+      </div>
+      <div class="dark-token">
+        <div class="dark-token__swatch" style="background:hsl(240 10% 8%);"></div>
+        <div class="dark-token__info"><div class="dark-token__name">--card.dark</div><div class="dark-token__val">hsl(240 10% 8%)</div></div>
+      </div>
+      <div class="dark-token">
+        <div class="dark-token__swatch" style="background:hsl(240 8% 12%);"></div>
+        <div class="dark-token__info"><div class="dark-token__name">--bg-elevated.dark</div><div class="dark-token__val">hsl(240 8% 12%)</div></div>
+      </div>
+      <div class="dark-token">
+        <div class="dark-token__swatch" style="background:hsl(240 3.7% 20%);border:1px solid #333;"></div>
+        <div class="dark-token__info"><div class="dark-token__name">--border.dark</div><div class="dark-token__val">hsl(240 3.7% 20%)</div></div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--when">¿Cuándo aplicar dark mode?</div>
+      <p>El sitio web (<strong>veldrion.com</strong>) usa dark mode como opción manual activada por el usuario via toggle — no automático por preferencia del sistema. El portal (<strong>hub.veldrion.com</strong>) puede ser dark-first.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">El naranja no cambia</div>
+      <p><code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#dd5000</code> es el mismo en light y dark. Solo se ajusta el tint: <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">rgba(255,107,43,.12)</code> en dark vs <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">rgba(221,80,0,.08)</code> en light.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Elementos que NO soportan dark</div>
+      <p>Las fotografías de hero. Los logos de partners. El logo en fotografía. Estos elementos son siempre sobre overlay oscuro — son compatibles por diseño, no requieren variante dark.</p>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      <p><strong>Para implementar:</strong> el toggle de dark mode aplica la clase <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">.dark</code> en <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">&lt;html&gt;</code>. Todos los tokens en <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">colors_and_type.css</code> tienen su contraparte en <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">.dark { ... }</code>. En Next.js se gestiona con <code style="font-family:var(--font-mono);font-size:12px;background:rgba(221,80,0,.08);padding:2px 6px;border-radius:3px;">next-themes</code>.</p>
+    </div>
+
+  </section>
+
+  <!-- ══ 9. EVOLUCIÓN DE MARCA ══ -->
+  <section class="section" id="evolucion">
+    <span class="section__eyebrow">09 — Recomendaciones</span>
+    <h2 class="section__title">Evolución de marca</h2>
+    <p class="section__sub">Hacia un posicionamiento tech corporativo más sólido. Estos cambios son evolutivos — no rompen la identidad actual, la elevan.</p>
+
+    <div class="three-col" style="margin-bottom:32px;">
+      <div class="rule-card" style="margin-bottom:0;border-left:3px solid var(--brand);">
+        <div class="rule-card__label rule-card__label--when">1. Fotografía más fría</div>
+        <p>Migrar de tonos cálidos/neutros a fotografía con temperatura de color fría (5500–6500K), ligeramente desaturada. Ambientes de datacenter, LED azul/blanco, infraestructura moderna. Sin dorado ni calidez.</p>
+      </div>
+      <div class="rule-card" style="margin-bottom:0;border-left:3px solid var(--brand);">
+        <div class="rule-card__label rule-card__label--when">2. Tipografía más técnica</div>
+        <p>Geist se mantiene, pero aumentar el uso de <strong>Geist Mono</strong> en elementos UI de soporte — métricas, badges técnicos, etiquetas de datos, uptime counters. Da lectura de "sistema vivo".</p>
+      </div>
+      <div class="rule-card" style="margin-bottom:0;border-left:3px solid var(--brand);">
+        <div class="rule-card__label rule-card__label--when">3. Radii más cuadrados</div>
+        <p>Reducir el radio por defecto de 8px a <strong>6px</strong> en cards y contenedores. Mantener 8px solo en botones. Más anguloso = más técnico. Los badges de servicio pueden bajar a 4px.</p>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:32px;">
+      <!-- Antes -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:12px;">Estilo actual</div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:20px;background:#fff;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:36px;height:36px;border-radius:8px;background:var(--brand-tint);color:var(--brand);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div style="font:600 14px var(--font-sans);color:var(--fg);">Soporte TI</div>
+          </div>
+          <div style="font-size:12px;color:var(--fg-muted);">Mesa de ayuda, soporte remoto y presencial.</div>
+          <div style="display:flex;gap:6px;">
+            <span style="font:600 11px var(--font-sans);background:var(--bg-subtle);border:1px solid var(--border);border-radius:9999px;padding:2px 10px;color:var(--fg-muted);">99.9% Uptime</span>
+            <span style="font:600 11px var(--font-sans);background:var(--brand-tint);border:1px solid rgba(221,80,0,.25);border-radius:9999px;padding:2px 10px;color:var(--brand);">24/7</span>
+          </div>
+        </div>
+      </div>
+      <!-- Dirección propuesta -->
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:12px;">Dirección propuesta</div>
+        <div style="border:1px solid #d4d4d8;border-radius:6px;padding:20px;background:#fafafa;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:36px;height:36px;border-radius:4px;background:rgba(221,80,0,.06);color:var(--brand);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div style="font:600 14px var(--font-mono);color:var(--fg);letter-spacing:-.01em;">Soporte TI</div>
+          </div>
+          <div style="font-size:12px;color:var(--fg-muted);font-family:var(--font-sans);">Mesa de ayuda, soporte remoto y presencial.</div>
+          <div style="display:flex;gap:6px;">
+            <span style="font:500 11px var(--font-mono);background:#f4f4f5;border:1px solid #e4e4e7;border-radius:4px;padding:2px 8px;color:#71717a;">99.9% uptime</span>
+            <span style="font:500 11px var(--font-mono);background:rgba(221,80,0,.06);border:1px solid rgba(221,80,0,.2);border-radius:4px;padding:2px 8px;color:var(--brand);">24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong>Lo que no cambia:</strong> el naranja `#dd5000`, el logo, la voz y tono, y la estructura de layout. La evolución es en densidad visual, temperatura de fotografía y peso tipográfico — no en identidad de marca.</p>
+    </div>
+  </section>
+
+  <!-- ══ 10. VELDRION AI AGENCY ══ -->
+  <section class="section" id="ai-agency">
+    <span class="section__eyebrow">10 — Submarca</span>
+    <h2 class="section__title">Veldrion AI Agency</h2>
+    <p class="section__sub">Una submarca orientada a inteligencia artificial aplicada al negocio. Comparte el V-mark y los valores de Veldrion, pero con una identidad visual propia — más oscura, más futurista, diferenciada.</p>
+
+    <!-- Concepto visual -->
+    <div style="
+      background: #09090b;
+      border-radius: 16px;
+      padding: 48px 40px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #1f1f23;
+    ">
+      <!-- Grid bg -->
+      <div style="
+        position:absolute;inset:0;opacity:.04;
+        background-image:repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 32px),
+                         repeating-linear-gradient(90deg,#fff 0,#fff 1px,transparent 1px,transparent 32px);
+      "></div>
+      <!-- Glow -->
+      <div style="position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(99,102,241,.18) 0%,transparent 70%);pointer-events:none;"></div>
+
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:24px;max-width:560px;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <img src="assets/brand/veldrion-v-mark-white.svg" alt="V" style="height:32px;width:auto;">
+          <div>
+            <div style="font:700 20px var(--font-sans);color:#fff;letter-spacing:-.02em;line-height:1;">Veldrion</div>
+            <div style="font:500 13px var(--font-mono);color:#6366f1;letter-spacing:.08em;text-transform:uppercase;">AI Agency</div>
+          </div>
+        </div>
+        <h3 style="font:700 clamp(24px,3vw,36px) var(--font-sans);color:#fff;letter-spacing:-.02em;line-height:1.1;margin:0;">
+          Inteligencia artificial<br>aplicada a tu negocio.
+        </h3>
+        <p style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.65;margin:0;">
+          Automatización de procesos, agentes de IA, integración con LLMs y workflows inteligentes para PYMEs y empresas en crecimiento.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <button style="height:40px;padding:0 18px;border-radius:6px;background:#6366f1;color:#fff;font:600 14px var(--font-sans);border:0;cursor:pointer;">Explorar soluciones</button>
+          <button style="height:40px;padding:0 18px;border-radius:6px;background:transparent;color:rgba(255,255,255,.7);font:500 14px var(--font-sans);border:1px solid rgba(255,255,255,.15);cursor:pointer;">Ver casos de uso</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paleta AI Agency -->
+    <h3 style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-subtle);margin-bottom:16px;">Paleta — AI Agency</h3>
+    <div class="color-palette" style="grid-template-columns:repeat(5,1fr);margin-bottom:8px;">
+      <div class="swatch">
+        <div class="swatch__color" style="background:#6366f1;"></div>
+        <div class="swatch__info"><span class="swatch__name">AI Primary</span><span class="swatch__hex">#6366f1</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#818cf8;"></div>
+        <div class="swatch__info"><span class="swatch__name">AI Light</span><span class="swatch__hex">#818cf8</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#4f46e5;"></div>
+        <div class="swatch__info"><span class="swatch__name">AI Dark</span><span class="swatch__hex">#4f46e5</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#09090b;"></div>
+        <div class="swatch__info"><span class="swatch__name">AI BG</span><span class="swatch__hex">#09090b</span></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__color" style="background:#1f1f23;border-bottom:1px solid #2a2a30;"></div>
+        <div class="swatch__info"><span class="swatch__name">AI Surface</span><span class="swatch__hex">#1f1f23</span></div>
+      </div>
+    </div>
+
+    <div class="callout" style="background:rgba(99,102,241,.08);border-color:rgba(99,102,241,.25);">
+      <svg class="callout__icon" style="color:#6366f1;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p><strong>Regla de convivencia:</strong> El naranja <code style="font-family:var(--font-mono);font-size:11px;background:rgba(99,102,241,.1);padding:1px 5px;border-radius:3px;">#dd5000</code> de Veldrion y el índigo <code style="font-family:var(--font-mono);font-size:11px;background:rgba(99,102,241,.1);padding:1px 5px;border-radius:3px;">#6366f1</code> de AI Agency <strong>nunca aparecen juntos</strong> en la misma pantalla. Cada contexto usa un solo acento.</p>
+    </div>
+
+    <div class="section__divider"></div>
+
+    <!-- Tokens AI Agency -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Tokens CSS — AI Agency</h3>
+    <div style="background:#09090b;border:1px solid #1f1f23;border-radius:var(--radius-lg);padding:20px 24px;">
+      <div class="token-row" style="border-color:#1f1f23;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-primary</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">#6366f1</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Acento principal — botones, links, highlights</span>
+      </div>
+      <div class="token-row" style="border-color:#1f1f23;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-primary-light</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">#818cf8</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Hover, tinte de texto sobre oscuro</span>
+      </div>
+      <div class="token-row" style="border-color:#1f1f23;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-bg</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">#09090b</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Fondo base — siempre oscuro</span>
+      </div>
+      <div class="token-row" style="border-color:#1f1f23;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-surface</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">#1f1f23</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Cards, paneles, contenedores elevados</span>
+      </div>
+      <div class="token-row" style="border-color:#1f1f23;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-border</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">#2a2a30</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Bordes y separadores</span>
+      </div>
+      <div class="token-row" style="border-bottom:none;">
+        <span class="token-row__name" style="color:#818cf8;">--ai-tint</span>
+        <span class="token-row__val" style="color:rgba(255,255,255,.4);">rgba(99,102,241,.12)</span>
+        <span class="token-row__desc" style="color:rgba(255,255,255,.35);">Fondos de iconos, tints sutiles</span>
+      </div>
+    </div>
+
+    <div class="section__divider"></div>
+
+    <!-- Componentes AI Agency -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:20px;">Componentes — AI Agency</h3>
+
+    <!-- Cards -->
+    <div style="background:#09090b;border-radius:12px;padding:28px;margin-bottom:16px;border:1px solid #1f1f23;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;">AI Cards</div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;">
+
+        <!-- Card 1 -->
+        <div style="background:#1f1f23;border:1px solid #2a2a30;border-radius:8px;padding:20px;width:200px;">
+          <div style="width:36px;height:36px;border-radius:6px;background:rgba(99,102,241,.12);color:#818cf8;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/><path d="M18 2l4 4-4 4"/><path d="M22 6h-8"/></svg>
+          </div>
+          <div style="font:600 14px var(--font-sans);color:#fff;margin-bottom:6px;">Automatización</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.55;">Workflows inteligentes con IA integrada.</div>
+        </div>
+
+        <!-- Card 2 con borde AI -->
+        <div style="background:#1f1f23;border:1px solid #6366f1;border-radius:8px;padding:20px;width:200px;box-shadow:0 0 20px rgba(99,102,241,.15);">
+          <div style="width:36px;height:36px;border-radius:6px;background:rgba(99,102,241,.15);color:#818cf8;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div style="font:600 14px var(--font-sans);color:#fff;margin-bottom:6px;">Agentes IA</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.55;">Agentes autónomos para tu operación.</div>
+          <div style="margin-top:12px;font-size:11px;font-family:var(--font-mono);color:#6366f1;">Destacado →</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botones AI -->
+    <div style="background:#09090b;border-radius:12px;padding:28px;margin-bottom:16px;border:1px solid #1f1f23;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;">AI Botones</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+        <button style="height:40px;padding:0 18px;border-radius:6px;background:#6366f1;color:#fff;font:600 14px var(--font-sans);border:0;cursor:pointer;">Explorar soluciones</button>
+        <button style="height:40px;padding:0 18px;border-radius:6px;background:transparent;color:rgba(255,255,255,.7);font:500 14px var(--font-sans);border:1px solid rgba(255,255,255,.15);cursor:pointer;">Ver casos de uso</button>
+        <button style="height:40px;padding:0 18px;border-radius:6px;background:transparent;color:#818cf8;font:500 14px var(--font-sans);border:1px solid rgba(99,102,241,.4);cursor:pointer;">Consulta Gratuita</button>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;background:rgba(99,102,241,.12);color:#818cf8;border:1px solid rgba(99,102,241,.25);font:600 11px var(--font-sans);">Beta</span>
+      </div>
+    </div>
+
+    <div class="section__divider"></div>
+
+    <!-- Reglas de submarca -->
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Reglas de submarca</h3>
+
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">V-mark compartido</div>
+      <p>AI Agency usa el mismo V-mark de Veldrion — siempre en blanco sobre fondos oscuros. El wordmark se escribe <strong>"Veldrion AI Agency"</strong> (no solo "AI Agency"), con "AI Agency" en <span style="font-family:var(--font-mono);color:#6366f1;">Geist Mono</span> como subtítulo en índigo.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">Dark-first obligatorio</div>
+      <p>AI Agency siempre presenta su interfaz en modo oscuro. No existe light mode para esta submarca — el fondo base siempre es <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#09090b</code>.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--dont">Mezcla de acentos</div>
+      <p>El naranja <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#dd5000</code> de Veldrion principal y el índigo <code style="font-family:var(--font-mono);font-size:11px;background:var(--bg-subtle);padding:1px 5px;border-radius:3px;">#6366f1</code> de AI Agency nunca conviven en el mismo layout. Son acentos exclusivos de cada contexto.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-card__label rule-card__label--do">Voz en AI Agency</div>
+      <p>Mismo tono: formal, técnico, beneficio-led, sin exclamaciones. La diferencia es el vocabulario: "automatización", "agentes", "workflows inteligentes", "LLMs" — términos que no aparecen en Veldrion principal.</p>
+    </div>
+
+    <!-- Footer of doc -->
+    <div style="margin-top:64px;padding-top:32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div>
+        <img src="assets/brand/logo-new-black.svg" alt="Veldrion" style="height:24px;opacity:.5;display:block;margin-bottom:8px;">
+        <div style="font-size:12px;color:var(--fg-subtle);">Brand Guidelines v1.1 · Mayo 2026 · Querétaro, México</div>
+      </div>
+      <div style="font-size:12px;color:var(--fg-subtle);text-align:right;">
+        veldrion.com · info@veldrion.com<br>
+        Fuente del repo: <span style="font-family:var(--font-mono);">Curlias/veldrion-web</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+function setActive(el) {
+  document.querySelectorAll('.sidebar__link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Scroll spy
+const sections = document.querySelectorAll('.section[id]');
+const links = document.querySelectorAll('.sidebar__link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

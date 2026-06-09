@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Veldrion Design System — Colors & Type
+   Source of truth: Curlias/veldrion-web (Next.js 15 + Tailwind)
+     - tailwind.config.js  → brand palette
+     - app/globals.css     → shadcn HSL tokens (light + dark)
+     - components/Logo.tsx → /brand/logo black.svg, /brand/logo white.svg
+     - app/layout.tsx      → Geist Sans / Geist Mono via `geist` package
+   ========================================================================== */
+
+:root {
+  /* ---------- BRAND COLORS (tailwind.config.js → colors.brand) ---------- */
+  --vd-brand:        #dd5000;   /* DEFAULT — primary orange */
+  --vd-brand-light:  #ff6b2b;
+  --vd-brand-dark:   #B8440A;
+  --vd-brand-darker: #cc4800;
+
+  /* Legacy aliases used in older components (Hero.tsx gradient, badges) */
+  --vd-orange-500: #FF6B35;
+  --vd-orange-600: #E85A2D;
+
+  /* Navy ramp — used on dark hero overlays and a small set of components */
+  --vd-navy-900: #0A192F;
+  --vd-navy-800: #112240;
+  --vd-navy-700: #1D3461;
+
+  /* Neutrals (shadcn/Tailwind defaults the codebase relies on) */
+  --vd-white:    #FFFFFF;
+  --vd-gray-50:  #FAFAFA;
+  --vd-gray-100: #F4F4F5;
+  --vd-gray-200: #E4E4E7;
+  --vd-gray-300: #D4D4D8;
+  --vd-gray-400: #A1A1AA;
+  --vd-gray-500: #71717A;
+  --vd-gray-600: #52525B;
+  --vd-gray-700: #3F3F46;
+  --vd-gray-800: #27272A;
+  --vd-gray-900: #18181B;
+
+  /* Semantic accents */
+  --vd-success:     #10B981;
+  --vd-success-700: #0D9668;
+  --vd-destructive: #EF4444;
+  --vd-info:        #3B82F6;
+
+  /* ---------- SHADCN HSL TOKENS — LIGHT (default in app/globals.css) ----- */
+  --background:        hsl(0 0% 100%);
+  --foreground:        hsl(240 10% 3.9%);
+  --card:              hsl(0 0% 100%);
+  --card-foreground:   hsl(240 10% 3.9%);
+  --popover:           hsl(0 0% 100%);
+  --popover-foreground:hsl(240 10% 3.9%);
+  --primary:           hsl(240 5.9% 10%);
+  --primary-foreground:hsl(0 0% 98%);
+  --secondary:         hsl(240 4.8% 95.9%);
+  --secondary-foreground: hsl(240 5.9% 10%);
+  --muted:             hsl(240 4.8% 95.9%);
+  --muted-foreground:  hsl(240 3.8% 46.1%);
+  --accent:            hsl(240 4.8% 95.9%);
+  --accent-foreground: hsl(240 5.9% 10%);
+  --destructive:       hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border:            hsl(240 5.9% 90%);
+  --input:             hsl(240 5.9% 90%);
+  --ring:              hsl(240 5.9% 10%);
+  --radius:            0.5rem;
+
+  /* ---------- SEMANTIC TOKENS (light mode default) ---------- */
+  --bg:           var(--background);
+  --bg-elevated:  var(--vd-gray-50);
+  --bg-card:      var(--card);
+  --bg-overlay:   rgba(0, 0, 0, 0.6);
+
+  --fg:           var(--foreground);
+  --fg-muted:     var(--muted-foreground);
+  --fg-subtle:    var(--vd-gray-500);
+
+  --brand:        var(--vd-brand);
+  --brand-hover:  var(--vd-brand-darker);
+  --brand-tint:   rgba(221, 80, 0, 0.08);
+  --brand-ring:   rgba(221, 80, 0, 0.30);
+
+  --hairline:     var(--border);
+  --hairline-soft: hsl(240 5.9% 94%);
+
+  /* ---------- RADII (tailwind: --radius / -2 / -4) ---------- */
+  --radius-sm:  calc(var(--radius) - 4px);   /* 4px */
+  --radius-md:  calc(var(--radius) - 2px);   /* 6px */
+  --radius-lg:  var(--radius);               /* 8px */
+  --radius-xl:  12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-sm:    0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow:       0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-md:    0 6px 16px rgba(15, 23, 42, 0.10);
+  --shadow-lg:    0 12px 24px rgba(15, 23, 42, 0.12);
+  --shadow-xl:    0 20px 40px rgba(15, 23, 42, 0.16);
+  --shadow-brand: 0 8px 24px rgba(221, 80, 0, 0.32);
+
+  /* ---------- SPACING (Tailwind 4px scale) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---------- MOTION ---------- */
+  --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);  /* Tailwind pulse */
+  --dur-fast:    150ms;
+  --dur:         200ms;
+  --dur-slow:    300ms;
+  --dur-page:    600ms;
+
+  /* ---------- TYPOGRAPHY ---------- */
+  /* Geist Sans / Geist Mono via `geist` npm package — closest free stand-in is
+     the Geist family on Google Fonts. We fall back gracefully. */
+  --font-sans: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "JetBrains Mono",
+               Menlo, Consolas, monospace;
+
+  /* Type scale — Tailwind defaults the codebase actually invokes */
+  --text-xs:    12px;   /* badge, micro-label */
+  --text-sm:    14px;   /* body small, button text, nav links */
+  --text-base:  16px;   /* body */
+  --text-lg:    18px;   /* hero subhead */
+  --text-xl:    20px;   /* hero subhead md+ */
+  --text-2xl:   24px;
+  --text-3xl:   30px;   /* section H2 mobile */
+  --text-4xl:   36px;   /* hero mobile, section H1 */
+  --text-5xl:   48px;
+  --text-6xl:   60px;   /* hero md (md:text-6xl) */
+  --text-7xl:   72px;   /* hero lg (lg:text-7xl) */
+
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.02em;
+}
+
+/* ==========================================================================
+   DARK MODE — `.dark` class on <html> (next-themes); shadcn HSL tokens
+   ========================================================================== */
+.dark {
+  --background:        hsl(240 10% 3.9%);
+  --foreground:        hsl(0 0% 98%);
+  --card:              hsl(240 10% 8%);
+  --card-foreground:   hsl(0 0% 98%);
+  --popover:           hsl(240 10% 3.9%);
+  --popover-foreground:hsl(0 0% 98%);
+  --primary:           hsl(0 0% 98%);
+  --primary-foreground:hsl(240 5.9% 10%);
+  --secondary:         hsl(240 3.7% 20%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted:             hsl(240 3.7% 20%);
+  --muted-foreground:  hsl(240 5% 70%);
+  --accent:            hsl(240 3.7% 20%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive:       hsl(0 62.8% 40%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border:            hsl(240 3.7% 20%);
+  --input:             hsl(240 3.7% 20%);
+  --ring:              hsl(240 4.9% 83.9%);
+
+  --bg-elevated:       hsl(240 8% 12%);
+  --hairline-soft:     hsl(240 3.7% 16%);
+  --shadow-sm:         0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow:            0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-md:         0 6px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:         0 12px 24px rgba(0, 0, 0, 0.6);
+  --shadow-xl:         0 20px 40px rgba(0, 0, 0, 0.6);
+  --brand-tint:        rgba(255, 107, 43, 0.12);
+}
+
+/* ==========================================================================
+   Semantic class helpers — use these instead of raw vars where possible.
+   ========================================================================== */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.h-display {
+  /* Hero: "Servicios y Consultoría de TI para tu Empresa" */
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.h1 {
+  font-weight: 700;
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.h3 {
+  font-weight: 600;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+.h4 {
+  font-weight: 600;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.lead {
+  font-size: clamp(var(--text-lg), 2vw, var(--text-xl));
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+  font-weight: 400;
+}
+
+.p, p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+}
+
+.small {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--fg-subtle);
+}
+
+.code, code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--hairline);
+}
+
+/* Brand-text gradient used in hero (see components/Hero.tsx) */
+.brand-gradient-text {
+  background: linear-gradient(135deg, var(--vd-brand-light), var(--vd-brand) 50%, var(--vd-brand-darker));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand-ring);
+}
